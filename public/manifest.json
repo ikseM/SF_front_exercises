@@ -1,0 +1,11 @@
+{
+  "short_name": "SF FRONT",
+  "name": "SF Front exercises",
+  "icons": [
+
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
