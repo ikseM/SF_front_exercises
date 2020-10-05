@@ -16,7 +16,7 @@ const TYPES = {
 };
 
 const App = () => {
-  const [type, setType] = useState(TYPES.REPEATS);
+  const [type, setType] = useState(TYPES.DESTRUCTURING);
   const onChange = (event: RadioChangeEvent) => {
     setType(event.target.value);
   };
