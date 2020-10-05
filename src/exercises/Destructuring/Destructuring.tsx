@@ -29,7 +29,7 @@ const Destructuring = (props: IProps) => {
       <Styled.Card>
         <div>
           <Styled.Avatar status={status}>
-            <img src={props.avatar} />
+            <img src={props.avatar} alt={'Avatar'} />
           </Styled.Avatar>
           <Styled.SwitchContainer>
             {STATUS_CONST[2]}{' '}

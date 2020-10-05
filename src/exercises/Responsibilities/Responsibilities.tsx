@@ -95,7 +95,7 @@ const Responsibilities = ({ isVisible }: IProps) => {
           <>
             <div>
               <Styled.Avatar status={status}>
-                <img src={avatar} />
+                <img src={avatar} alt={'Avatar'} />
               </Styled.Avatar>
               <Styled.SwitchContainer>
                 {afk.key}{' '}

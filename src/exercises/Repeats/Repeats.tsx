@@ -4,7 +4,7 @@ import { Switch, Button } from 'antd';
 import swifty_avatar from '../../commons/swifty.png';
 import pat_avatar from '../../commons/pat.png';
 import leeroy_avatar from '../../commons/leeroy.png';
-import { SelectValue } from 'antd/es/select';
+
 import {
   DATA,
   findTitle,
@@ -94,7 +94,7 @@ const Repeats = ({ isVisible }: IProps) => {
           <>
             <div>
               <Styled.Avatar status={status}>
-                <img src={player.avatar} />
+                <img src={player.avatar} alt={'Avatar'} />
               </Styled.Avatar>
               <Styled.SwitchContainer>
                 {afk.key}{' '}
