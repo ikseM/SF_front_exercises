@@ -4,18 +4,18 @@ import * as Styled from './App.styles';
 import { RadioChangeEvent } from 'antd/es/radio';
 
 import Destructuring from './exercises/Destructuring/Destructuring';
+import Responsibilities from './exercises/Responsibilities/Responsibilities';
 import avatar from './commons/avatar.png';
 
 const { Group, Button } = Radio;
 const TYPES = {
   DESTRUCTURING: 'DESTRUCTURING',
   RESPONSIBILITIES: 'RESPONSIBILITIES',
-  REPEATS: 'REPEATS',
-  COMPONENTS: 'COMPONENTS'
+  REPEATS: 'REPEATS'
 };
 
 const App = () => {
-  const [type, setType] = useState(TYPES.DESTRUCTURING);
+  const [type, setType] = useState(TYPES.RESPONSIBILITIES);
   const onChange = (event: RadioChangeEvent) => {
     setType(event.target.value);
   };
@@ -24,15 +24,10 @@ const App = () => {
     <Styled.Container>
       <Styled.Header>SF Front</Styled.Header>
       <Styled.RadioContainer>
-        <Group
-          onChange={onChange}
-          defaultValue={TYPES.DESTRUCTURING}
-          buttonStyle="solid"
-        >
+        <Group value={type} onChange={onChange} buttonStyle="solid">
           <Button value={TYPES.DESTRUCTURING}>Destrukturyzacja</Button>
           <Button value={TYPES.RESPONSIBILITIES}>Odpowiedzialności</Button>
           <Button value={TYPES.REPEATS}>Powtórzenia</Button>
-          <Button value={TYPES.COMPONENTS}>Komponenty</Button>
         </Group>
       </Styled.RadioContainer>
       <Styled.Components>
@@ -42,8 +37,9 @@ const App = () => {
           nick={'Leeroy'}
           title={'Jenkins'}
           lastLogin={'24.02.1998'}
-          status={false}
+          status={true}
         />
+        <Responsibilities isVisible={type === TYPES.RESPONSIBILITIES} />
       </Styled.Components>
     </Styled.Container>
   );

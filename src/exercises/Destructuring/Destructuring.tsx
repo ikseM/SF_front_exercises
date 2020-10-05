@@ -11,13 +11,13 @@ interface IProps {
   lastLogin: string;
 }
 
-const STATUS_CONST = ['Online', 'Afk'];
+const STATUS_CONST = ['Useless', 'Online', 'Afk'];
 
 const Destructuring = (props: IProps) => {
   const [status, setStatus] = useState<boolean>(props.status);
 
   const queryStatus = () => {
-    return status ? STATUS_CONST[0] : STATUS_CONST[1];
+    return status ? STATUS_CONST[1] : STATUS_CONST[2];
   };
 
   const onStatusChange = (checked: boolean) => {
@@ -32,9 +32,9 @@ const Destructuring = (props: IProps) => {
             <img src={props.avatar} />
           </Styled.Avatar>
           <Styled.SwitchContainer>
-            {STATUS_CONST[1]}{' '}
+            {STATUS_CONST[2]}{' '}
             <Switch checked={status} size="small" onChange={onStatusChange} />{' '}
-            {STATUS_CONST[0]}
+            {STATUS_CONST[1]}
           </Styled.SwitchContainer>
         </div>
         <Styled.Data>
