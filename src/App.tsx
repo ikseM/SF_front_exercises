@@ -5,7 +5,8 @@ import { RadioChangeEvent } from 'antd/es/radio';
 
 import Destructuring from './exercises/Destructuring/Destructuring';
 import Responsibilities from './exercises/Responsibilities/Responsibilities';
-import avatar from './commons/avatar.png';
+import Repeats from './exercises/Repeats/Repeats';
+import leeroy from './commons/leeroy.png';
 
 const { Group, Button } = Radio;
 const TYPES = {
@@ -15,7 +16,7 @@ const TYPES = {
 };
 
 const App = () => {
-  const [type, setType] = useState(TYPES.RESPONSIBILITIES);
+  const [type, setType] = useState(TYPES.REPEATS);
   const onChange = (event: RadioChangeEvent) => {
     setType(event.target.value);
   };
@@ -33,13 +34,14 @@ const App = () => {
       <Styled.Components>
         <Destructuring
           isVisible={type === TYPES.DESTRUCTURING}
-          avatar={avatar}
+          avatar={leeroy}
           nick={'Leeroy'}
           title={'Jenkins'}
           lastLogin={'24.02.1998'}
           status={true}
         />
         <Responsibilities isVisible={type === TYPES.RESPONSIBILITIES} />
+        <Repeats isVisible={type === TYPES.REPEATS} />
       </Styled.Components>
     </Styled.Container>
   );

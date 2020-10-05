@@ -1,58 +1,39 @@
 import React, { useEffect, useState } from 'react';
-import * as Styled from './Responsibilities.styles';
-import { Switch, Select } from 'antd';
-import avatar from '../../commons/leeroy.png';
+import * as Styled from './Repeats.styles';
+import { Switch, Button } from 'antd';
+import swifty_avatar from '../../commons/swifty.png';
+import pat_avatar from '../../commons/pat.png';
+import leeroy_avatar from '../../commons/leeroy.png';
 import { SelectValue } from 'antd/es/select';
+import {
+  DATA,
+  findTitle,
+  findLoginData,
+  findStatus,
+  gatherPayload
+} from './helper';
 
 interface IProps {
   isVisible: boolean;
 }
-
-const STATUSES = [
-  { key: 'Online', value: true },
-  { key: 'Afk', value: false }
-];
-
-const TITLES = [
-  {
-    key: 'Leeroy',
-    value: 'Jenkins'
-  },
-  { key: 'Pat', value: 'PVP' },
-  { key: 'Swifty', value: 'Mastermind' }
-];
-
-const LOGINS = [
-  {
-    key: 'Jenkins',
-    value: '24.02.1998'
-  },
-  { key: 'PVP', value: '13.07.2016' },
-  { key: 'Mastermind', value: '01.01.2021' }
-];
-
-const DEFAULT_STATUS = true;
 
 type Player = {
   nick: string;
   title: string;
   lastLogin: string;
   status: boolean;
+  avatar?: string;
 };
 
-const Responsibilities = ({ isVisible }: IProps) => {
-  const [status, setStatus] = useState<boolean>(() => {
-    const tempStatus = STATUSES.find(status => status.value === DEFAULT_STATUS);
-    if (tempStatus) return tempStatus.value;
-    return false;
-  });
+const Repeats = ({ isVisible }: IProps) => {
+  const [status, setStatus] = useState<boolean>(findStatus());
 
   const [player, setPlayer] = useState<Player>();
   useEffect(() => {
     if (player) setStatus(player.status);
   }, [player]);
 
-  const [online, afk] = STATUSES;
+  const [online, afk] = DATA.STATUSES;
   const queryStatus = () => {
     return status ? online.key : afk.key;
   };
@@ -61,41 +42,59 @@ const Responsibilities = ({ isVisible }: IProps) => {
     setStatus(checked);
   };
 
-  const onChange = (value: SelectValue) => {
-    queryPlayerData(value as string);
+  const onLeeroyClick = () => {
+    const player = queryPlayerData('Leeroy');
+    if (player) {
+      player.avatar = leeroy_avatar;
+      setPlayer(player);
+    }
+  };
+  const onPatClick = () => {
+    const player = queryPlayerData('Pat');
+    if (player) {
+      player.avatar = pat_avatar;
+      setPlayer(player);
+    }
+  };
+  const onSwiftyClick = () => {
+    const player = queryPlayerData('Swifty');
+    if (player) {
+      player.avatar = swifty_avatar;
+      setPlayer(player);
+    }
   };
 
-  const queryPlayerData = (value: string) => {
-    const title = TITLES.find(title => title.key === value);
+  const queryPlayerData = (value: string): Player | undefined => {
+    const title = findTitle(value);
 
     if (title) {
-      const loginDate = LOGINS.find(login => login.key === title.value);
-      const status = STATUSES.find(status => status.value === DEFAULT_STATUS);
+      const loginDate = findLoginData(title.value);
+      const status = findStatus();
 
       if (status) {
-        const payload = {
+        return gatherPayload({
           nick: value,
           title: title ? title.value : '',
           lastLogin: loginDate ? loginDate.value : '',
-          status: status.value
-        };
-
-        setPlayer(payload);
+          status
+        });
       }
     }
   };
 
   return (
     <Styled.Container isVisible={isVisible}>
-      <Styled.Select onChange={onChange}>
-        <Select.Option value="Leeroy">Leeroy</Select.Option>
-      </Styled.Select>
+      <Styled.Group>
+        <Button onClick={onLeeroyClick}>Leeroy</Button>
+        <Button onClick={onPatClick}>Pat</Button>
+        <Button onClick={onSwiftyClick}>Swifty</Button>
+      </Styled.Group>
       <Styled.Card>
         {player ? (
           <>
             <div>
               <Styled.Avatar status={status}>
-                <img src={avatar} />
+                <img src={player.avatar} />
               </Styled.Avatar>
               <Styled.SwitchContainer>
                 {afk.key}{' '}
@@ -138,4 +137,4 @@ const Responsibilities = ({ isVisible }: IProps) => {
   );
 };
 
-export default Responsibilities;
+export default Repeats;
