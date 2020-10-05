@@ -10,12 +10,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c1829133-5356-48dc-9471-ee40da7047d7" name="Default Changelist" comment="Responsibilities">
-      <change afterPath="$PROJECT_DIR$/src/exercises/Repeats/Repeats.styles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exercises/Repeats/Repeats.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exercises/Repeats/helper.ts" afterDir="false" />
+    <list default="true" id="c1829133-5356-48dc-9471-ee40da7047d7" name="Default Changelist" comment="Repeats">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exercises/Destructuring/Destructuring.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercises/Destructuring/Destructuring.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exercises/Repeats/Repeats.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercises/Repeats/Repeats.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exercises/Responsibilities/Responsibilities.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/exercises/Responsibilities/Responsibilities.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,6 +30,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iQWdz6SB3jsllmGfOhlPc3XeeH" />
@@ -67,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601840386686</updated>
       <workItem from="1601840387732" duration="2842000" />
-      <workItem from="1601879525727" duration="17057000" />
+      <workItem from="1601879525727" duration="17392000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1601841984271</created>
@@ -97,7 +100,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601897403161</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Repeats">
+      <created>1601901630853</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1601901630853</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,17 +129,19 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Destructuring" />
     <MESSAGE value="Responsibilities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Responsibilities" />
+    <MESSAGE value="Repeats" />
+    <option name="LAST_COMMIT_MESSAGE" value="Repeats" />
   </component>
   <component name="WindowStateProjectService">
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1601840709599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601840709599" />
-    <state width="458" height="303" key="Git.Branch.Popup" timestamp="1601842036646">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="462" height="307" key="Git.Branch.Popup" timestamp="1601901799005">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="458" height="303" key="Git.Branch.Popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601842036646" />
+    <state width="462" height="307" key="Git.Branch.Popup/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1601901799005" />
     <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1601881965166">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -155,11 +167,11 @@
     </state>
     <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601841533130" />
     <state x="2381" y="165" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1601890311760" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601897404865">
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2" timestamp="1601901632234">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601842106734" />
-    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1601897404865" />
+    <state x="2472" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1601901632234" />
     <state x="2536" y="240" key="run.anything.popup" timestamp="1601885552837">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
