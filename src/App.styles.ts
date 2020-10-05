@@ -14,6 +14,10 @@ export const Header = styled.div`
   align-items: center;
 `;
 
-export const Main = styled.div`
+export const RadioContainer = styled.div`
+  margin: 5px;
+`;
+
+export const Components = styled.div`
   margin: 5px;
 `;
