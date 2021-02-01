@@ -6,7 +6,7 @@ import pat_avatar from '../../commons/pat.png';
 import leeroy_avatar from '../../commons/leeroy.png';
 
 import { selectPlayer } from '../../actions/players';
-import { connect } from "react-redux";
+import {connect, useDispatch, useSelector} from "react-redux";
 
 import {
   DATA,
@@ -15,9 +15,7 @@ import {
   findStatus,
   gatherPayload
 } from './helper';
-
-type IProps = ReturnType<typeof mapStateToProps> &
-  typeof mapDispatchToProps;
+import {RootState} from '../../reducers';
 
 type Player = {
   nick: string;
@@ -27,7 +25,10 @@ type Player = {
   avatar?: string;
 };
 
-const Repeats = ({player: reduxPlayer, selectPlayer}: IProps) => {
+const Repeats = () => {
+  const reduxPlayer = useSelector((state: RootState) => state.players);
+  const dispatch = useDispatch();
+
   const [status, setStatus] = useState<boolean>(findStatus());
   const [player, setPlayer] = useState<Player>();
 
@@ -58,30 +59,8 @@ const Repeats = ({player: reduxPlayer, selectPlayer}: IProps) => {
     setStatus(checked);
   };
 
-  // const onLeeroyClick = () => {
-  //   const player = queryPlayerData('Leeroy');
-  //   if (player) {
-  //     player.avatar = leeroy_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-  // const onPatClick = () => {
-  //   const player = queryPlayerData('Pat');
-  //   if (player) {
-  //     player.avatar = pat_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-  // const onSwiftyClick = () => {
-  //   const player = queryPlayerData('Swifty');
-  //   if (player) {
-  //     player.avatar = swifty_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-
   const onPlayerClick = (player: string) => {
-    selectPlayer(player)
+    dispatch(selectPlayer(player))
   }
 
   const queryPlayerData = (value: string): Player | undefined => {
@@ -170,14 +149,4 @@ const Repeats = ({player: reduxPlayer, selectPlayer}: IProps) => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  return {
-    player: state.players
-  }
-}
-
-const mapDispatchToProps = {
-  selectPlayer
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Repeats);
+export default Repeats
