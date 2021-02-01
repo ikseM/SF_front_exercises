@@ -5,6 +5,9 @@ import swifty_avatar from '../../commons/swifty.png';
 import pat_avatar from '../../commons/pat.png';
 import leeroy_avatar from '../../commons/leeroy.png';
 
+import { selectPlayer } from '../../actions/players';
+import { connect } from "react-redux";
+
 import {
   DATA,
   findTitle,
@@ -13,9 +16,8 @@ import {
   gatherPayload
 } from './helper';
 
-interface IProps {
-  isVisible: boolean;
-}
+type IProps = ReturnType<typeof mapStateToProps> &
+  typeof mapDispatchToProps;
 
 type Player = {
   nick: string;
@@ -25,13 +27,27 @@ type Player = {
   avatar?: string;
 };
 
-const Repeats = ({ isVisible }: IProps) => {
+const Repeats = ({player: reduxPlayer, selectPlayer}: IProps) => {
   const [status, setStatus] = useState<boolean>(findStatus());
-
   const [player, setPlayer] = useState<Player>();
+
+  useEffect(() => {
+    if (reduxPlayer) {
+      const player = queryPlayerData(reduxPlayer);
+
+      if (player) {
+        player.avatar = queryPlayerAvatar(reduxPlayer);
+        setPlayer(player);
+      }
+    } else {
+      setPlayer(undefined)
+    }
+  }, [reduxPlayer])
+
   useEffect(() => {
     if (player) setStatus(player.status);
   }, [player]);
+
 
   const [online, afk] = DATA.STATUSES;
   const queryStatus = () => {
@@ -42,27 +58,31 @@ const Repeats = ({ isVisible }: IProps) => {
     setStatus(checked);
   };
 
-  const onLeeroyClick = () => {
-    const player = queryPlayerData('Leeroy');
-    if (player) {
-      player.avatar = leeroy_avatar;
-      setPlayer(player);
-    }
-  };
-  const onPatClick = () => {
-    const player = queryPlayerData('Pat');
-    if (player) {
-      player.avatar = pat_avatar;
-      setPlayer(player);
-    }
-  };
-  const onSwiftyClick = () => {
-    const player = queryPlayerData('Swifty');
-    if (player) {
-      player.avatar = swifty_avatar;
-      setPlayer(player);
-    }
-  };
+  // const onLeeroyClick = () => {
+  //   const player = queryPlayerData('Leeroy');
+  //   if (player) {
+  //     player.avatar = leeroy_avatar;
+  //     setPlayer(player);
+  //   }
+  // };
+  // const onPatClick = () => {
+  //   const player = queryPlayerData('Pat');
+  //   if (player) {
+  //     player.avatar = pat_avatar;
+  //     setPlayer(player);
+  //   }
+  // };
+  // const onSwiftyClick = () => {
+  //   const player = queryPlayerData('Swifty');
+  //   if (player) {
+  //     player.avatar = swifty_avatar;
+  //     setPlayer(player);
+  //   }
+  // };
+
+  const onPlayerClick = (player: string) => {
+    selectPlayer(player)
+  }
 
   const queryPlayerData = (value: string): Player | undefined => {
     const title = findTitle(value);
@@ -82,12 +102,25 @@ const Repeats = ({ isVisible }: IProps) => {
     }
   };
 
+  const queryPlayerAvatar = (value: string) => {
+    switch(value) {
+      case 'Leeroy':
+        return leeroy_avatar
+      case 'Pat':
+        return pat_avatar
+      case 'Swifty':
+        return swifty_avatar
+      default: return
+    }
+  }
+
   return (
-    <Styled.Container isVisible={isVisible}>
+    <Styled.Container isVisible={true}>
       <Styled.Group>
-        <Button onClick={onLeeroyClick}>Leeroy</Button>
-        <Button onClick={onPatClick}>Pat</Button>
-        <Button onClick={onSwiftyClick}>Swifty</Button>
+        <Button onClick={() => onPlayerClick('Leeroy')}>Leeroy</Button>
+        <Button onClick={() => onPlayerClick('Pat')}>Pat</Button>
+        <Button onClick={() => onPlayerClick('Swifty')}>Swifty</Button>
+        <Button onClick={() => onPlayerClick('')}>Clear</Button>
       </Styled.Group>
       <Styled.Card>
         {player ? (
@@ -137,4 +170,14 @@ const Repeats = ({ isVisible }: IProps) => {
   );
 };
 
-export default Repeats;
+const mapStateToProps = (state: any) => {
+  return {
+    player: state.players
+  }
+}
+
+const mapDispatchToProps = {
+  selectPlayer
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Repeats);
