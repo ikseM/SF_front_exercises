@@ -58,28 +58,6 @@ const Repeats = ({player: reduxPlayer, selectPlayer}: IProps) => {
     setStatus(checked);
   };
 
-  // const onLeeroyClick = () => {
-  //   const player = queryPlayerData('Leeroy');
-  //   if (player) {
-  //     player.avatar = leeroy_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-  // const onPatClick = () => {
-  //   const player = queryPlayerData('Pat');
-  //   if (player) {
-  //     player.avatar = pat_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-  // const onSwiftyClick = () => {
-  //   const player = queryPlayerData('Swifty');
-  //   if (player) {
-  //     player.avatar = swifty_avatar;
-  //     setPlayer(player);
-  //   }
-  // };
-
   const onPlayerClick = (player: string) => {
     selectPlayer(player)
   }
